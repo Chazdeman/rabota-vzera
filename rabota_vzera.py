@@ -1,7 +1,8 @@
 from tkinter import *
 from math import *
+import matplotlib.pyplot as plt
+import numpy as np
 
-global a,d,b,c
 aken=Tk()
 aken.geometry("300x500")
 aken.configure(bg="white")
@@ -24,60 +25,89 @@ def anim(x,y,text,bcolor,fcolor,cmd):
     mybutton.bind("<Leave>", on_leave)
 
     mybutton.place(x=x,y=y)
-
+n=0
+D=-1
+t="Нет решения!"
 def open_win():
     def rrr():
+        global a,D,b,c,t
         if (a.get()!="" and b.get()!="" and c.get()!=""):
-
-            a_=float(a.get())
-            b_=float(b.get())
-            c_=float(c.get())
-            D=b_*b_-4*a_*c_
-            if D > 0:
-                x1 = (-b + sqrt(d)) / (2 * a)
-                x2 = (-b - sqrt(d)) / (2 * a)
-                t=f"X1={x1_}, \nX2={x2_}"
-                graf=True
-            elif D == 0:
-                x1_=round((-1*b_)/(2*a_),2)
-                t=f"X1={x1_}"
-                graf=True
-            else:
-                t="Корней нет"
-                graf=False
-            vastus.configure(text=f"D={D}\n{t}")
-            a.configure(bg="#03ecfc")
-            b.configure(bg="#03ecfc")
-            c.configure(bg="#03ecfc")
-        else:
-            if a.get()=="":
+            if (float(a.get())==0 and float(b.get())==0 and float(c.get())==0):
+                vastus.configure(text=f"Ошибка!")
                 a.configure(bg="red")
-            if b.get()=="":
                 b.configure(bg="red")
-            if c.get()=="":
                 c.configure(bg="red")
-def grafik():
-    flag,D,t=rrr()
-    if flag==True:
-        a_=int(a.get())
-        b_=int(b.get())
-        c_=int(c.get())
-        x0=(-b_)/(2*a_)
-        y0=a_*x0*x0+b_*x0+c_
-        x = np.arange(x0-10, x0+10, 0.5)#min max step
-        y=a_*x*x+b_*x+c_
-        fig = plt.figure()
-        plt.plot(x, y,'b:o', x0, y0,'g-d')
-        plt.title('Квадратное уравнение')
-        plt.ylabel('y')
-        plt.xlabel('x')
-        plt.grid(True)
-        plt.show()
-        text=f"Вершина параболлы ({x0},{y0})"
-    else:
-        text=f"График нет возможности построить"
-    vastus.configure(text=f"D={D}\n{t}\n{text}")
+                graf=False
+            elif (float(a.get())==0 and float(b.get())!=0 and float(c.get())!=0):
+                vastus.configure(text=f"Ошибка!")
+                a.configure(bg="red")
+                b.configure(bg="#03ecfc")
+                c.configure(bg="#03ecfc")
+                graf=False
+            elif (float(a.get())!=0 and float(b.get())==0 and float(c.get())!=0):
+                vastus.configure(text=f"Ошибка!")
+                b.configure(bg="red")
+                a.configure(bg="#03ecfc")
+                c.configure(bg="#03ecfc")
+                graf=False
+            elif (float(a.get())!=0 and float(b.get())!=0 and float(c.get())==0):
+                vastus.configure(text=f"Ошибка!")
+                c.configure(bg="red")
+                b.configure(bg="#03ecfc")
+                a.configure(bg="#03ecfc")
+                graf=False
+            else:
+                a_=float(a.get())
+                b_=float(b.get())
+                c_=float(c.get())
+                D=b_*b_-4*a_*c_
+                if D > 0:
+                    x1_=round((-1*b_+sqrt(D))/(2*a_),2)
+                    x2_=round((-1*b_-sqrt(D))/(2*a_),2)
+                    t=f"X1={x1_}, \nX2={x2_}"
+                    graf=True
+                elif D == 0:
+                    x1_=round((-1*b_)/(2*a_),2)
+                    t=f"X1={x1_}"
+                    graf=True
+            
+                else:
+                    t="Корней нет"
+                    graf=False
+                    vastus.configure(text=f"D={D}\n{t}")
+                    a.configure(bg="#03ecfc")
+                    b.configure(bg="#03ecfc")
+                    c.configure(bg="#03ecfc")
+        else:
+
+           if a.get()=="":
+              a.configure(bg="red")
+           if b.get()=="":
+              b.configure(bg="red")
+           if c.get()=="":
+              c.configure(bg="red")
         return graf,D,t
+    def grafik():
+        flag,D,t=rrr()
+        if flag==True:
+            a_=int(a.get())
+            b_=int(b.get())
+            c_=int(c.get())
+            x0=(-b_)/(2*a_)
+            y0=a_*x0*x0+b_*x0+c_
+            x = np.arange(x0-10, x0+10, 0.5)#min max step
+            y=a_*x*x+b_*x+c_
+            fig = plt.figure()
+            plt.plot(x, y,'b:o', x0, y0,'g-d')
+            plt.title('Квадратное уравнение')
+            plt.ylabel('y')
+            plt.xlabel('x')
+            plt.grid(True)
+            plt.show()
+            text=f"Вершина параболлы ({x0},{y0})"
+        else:
+            text=f"График нет возможности построить"
+        vastus.configure(text=f"D={D}\n{t}\n{text}")
     global a,b,c
     win=Toplevel()#создаём второе(дочернее) окно Tk делает главную Toplevel делает вторую
     win.geometry("1000x500")
@@ -106,7 +136,6 @@ def grafik():
 
     win.mainloop()
 
-
 def cmd1():
     print("Exit . . . ")
     aken.destroy()
@@ -114,10 +143,8 @@ def cmd2():
     print("Toplevel")
     aken.command=open_win()
 
-
 anim(0,0,"В Ы Х О Д","#ffcc66","white",cmd1)
 anim(0,37,"Р Е Ш Е Н И Е","#f86263","white", cmd2)
-
 #canvas=Canvas(aken,width=600,height=300)
 #canvas.grid(columnspan=3)
 
