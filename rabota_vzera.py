@@ -31,6 +31,7 @@ t="Нет решения!"
 def open_win():
     def rrr():
         global a,D,b,c,t
+        graf=""
         if (a.get()!="" and b.get()!="" and c.get()!=""):
             if (float(a.get())==0 and float(b.get())==0 and float(c.get())==0):
                 vastus.configure(text=f"Ошибка!")
@@ -38,25 +39,25 @@ def open_win():
                 b.configure(bg="red")
                 c.configure(bg="red")
                 graf=False
-            elif (float(a.get())==0 and float(b.get())!=0 and float(c.get())!=0):
+            elif float(a.get())==0 and float(b.get())!=0 and float(c.get())!=0:
                 vastus.configure(text=f"Ошибка!")
                 a.configure(bg="red")
                 b.configure(bg="#03ecfc")
                 c.configure(bg="#03ecfc")
                 graf=False
-            elif (float(a.get())!=0 and float(b.get())==0 and float(c.get())!=0):
+            elif float(a.get())!=0 and float(b.get())==0 and float(c.get())!=0:
                 vastus.configure(text=f"Ошибка!")
                 b.configure(bg="red")
                 a.configure(bg="#03ecfc")
                 c.configure(bg="#03ecfc")
                 graf=False
-            elif (float(a.get())!=0 and float(b.get())!=0 and float(c.get())==0):
+            elif float(a.get())!=0 and float(b.get())!=0 and float(c.get())==0:
                 vastus.configure(text=f"Ошибка!")
                 c.configure(bg="red")
                 b.configure(bg="#03ecfc")
                 a.configure(bg="#03ecfc")
                 graf=False
-            else:
+            elif float(a.get())!=0 and float(b.get())!=0 and float(c.get())!=0:
                 a_=float(a.get())
                 b_=float(b.get())
                 c_=float(c.get())
@@ -70,14 +71,13 @@ def open_win():
                     x1_=round((-1*b_)/(2*a_),2)
                     t=f"X1={x1_}"
                     graf=True
-            
                 else:
                     t="Корней нет"
                     graf=False
-                    vastus.configure(text=f"D={D}\n{t}")
-                    a.configure(bg="#03ecfc")
-                    b.configure(bg="#03ecfc")
-                    c.configure(bg="#03ecfc")
+                vastus.configure(text=f"D={D}\n{t}")
+                a.configure(bg="#03ecfc")
+                b.configure(bg="#03ecfc")
+                c.configure(bg="#03ecfc")
         else:
 
            if a.get()=="":
