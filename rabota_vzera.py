@@ -183,24 +183,23 @@ def open_win2():
         plt.grid(True)
         plt.show()
     def ochi():
-        x1 = np.arange(0, 9.5, 1)#min max step
-        y1=(2/27)*x1*x1-3
-        x2 = np.arange(-10, 0.5, 1)#min max step
-        y2=0.04*x2*x2-3
-        x3 = np.arange(-9, -2.5, 1)#min max step
-        y3=(2/9)*(x3+6)**2+1
-        x4 = np.arange(-3, 9.5, 1)#min max step
-        y4=(-1/12)*(x4-3)**2+6
-        x5 = np.arange(5, 8.8  , 1)#min max step
-        y5=(1/9)*(x5-5)**2+2
-        x6 = np.arange(5, 9 , 1)#min max step
-        y6=(1/8)*(x6-7)**2+1.5
-        x7 = np.arange(-13, -8.5 , 1)#min max step
-        y7=(-0.75)*(x7+11)**2+6
-
+        x1 = np.arange(-9,-0.5, 0.5)#min max step
+        y1=(-1/16)*(x1+5)**2+2
+        x2 = np.arange(1,9.5, 0.5)#min max step
+        y2=(-1/16)*(x2-5)**2+2
+        x3 = np.arange(-9,-0.5, 0.5)#min max step
+        y3=(1/4)*(x3+5)**2-3
+        x4 = np.arange(1,9.5, 0.5)#min max step
+        y4=(1/4)*(x4-5)**2-3
+        x5 = np.arange(-9,-5.5  , 0.5)#min max step
+        y5=-(x5+7)**2+5
+        x6 = np.arange(6,9.5 , 0.5)#min max step
+        y6=-(x6-7)**2+5
+        x7 = np.arange(-1, 1.5 , 0.5)#min max step
+        y7=(-0.5)*x7*x7+1.5
         fig = plt.figure()
         plt.plot(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7)
-        plt.title('КИТ')
+        plt.title('ОЧКИ')
         plt.ylabel('y')
         plt.xlabel('x')
         plt.grid(True)
