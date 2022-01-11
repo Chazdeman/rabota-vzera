@@ -145,11 +145,11 @@ def open_win2():
     def veel():
         global t
         if t==0:
-            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()-200))
+            win2.geometry(str(win2.winfo_width())+"x"+str(win2.winfo_height()-200))
             btn_veel.config(text="Уменьшить окно")
             t=1
         else:
-            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()+200))
+            win2.geometry(str(win2.winfo_width())+"x"+str(win2.winfo_height()+200))
             btn_veel.config(text="Увеличить окно")
             t=0
     def ket():
@@ -240,6 +240,28 @@ def open_win2():
         plt.xlabel('x')
         plt.grid(True)
         plt.show()
+    def zontik():
+        x1 = np.arange(-12, 12, 0.5)#min max step
+        y1=(-1/18)*x1*x1+12
+        x2 = np.arange(-4, 4, 0.5)#min max step
+        y2=(-1/8)*x2*x2+6
+        x3 = np.arange(-12, -4, 0.5)#min max step
+        y3=(-1/8)*(x3+8)**2+6
+        x4 = np.arange(4, 12, 0.5)#min max step
+        y4=(-1/8)*(x4-8)**2+6
+        x5 = np.arange(-4, -0.3 , 0.5)#min max step
+        y5=2*(x5+3)**2-9
+        x6 = np.arange(-4, 0.2 , 0.5)#min max step
+        y6=1.5*(x6+3)**2-10
+
+        fig = plt.figure()
+        plt.plot(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6)
+        plt.title("umbrella")
+        plt.ylabel("y")
+        plt.xlabel("y")
+        plt.grid(True)
+        plt.show()
+
     def vibor():
         viber=var.get()
         lbl.configure(text=viber)
@@ -247,20 +269,46 @@ def open_win2():
     win2.geometry("1000x500")
     win2.grab_set()#не позволяет закрыть основное окно, пока не закроем дочернее окно
     win2.configure(bg="#A9A9A9")
+    btn_veel=Button(win2,text="Увеличить окно",font="Calibri 26",bg="green",command=veel)
     lbl=Label(win2,text="!Ф-И-Г-У-Р-Ы!", height=4, width=20, font="Arial 20", fg="black", bg="pink")
     var=StringVar()
     var.set("ODIN")
-    btn_veel=Button(win,text="Увеличить окно",font="Calibri 26",bg="green",command=veel)
-    btn_veel.pack(side=TOP)
     r1=Radiobutton(win2,text="Кит",height=3, width=6, font="Arial 20", fg="black", bg="green" , variable=var,value="kala", command=ket)
-    r2=Radiobutton(win2,text="Зонтик",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Зонтик")
+    r2=Radiobutton(win2,text="Зонтик",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Зонтик",command=zontik)
     r3=Radiobutton(win2,text="Лягушка",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Лягуха",command=lagushka)
     r4=Radiobutton(win2,text="Очки",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Очки", command=ochi)
     lbl.pack()
-    r1.pack(side=TOP)
+    btn_veel.pack(side=BOTTOM)
+    r1.pack(side=LEFT)
+    r2.pack(side=RIGHT)
+    r3.pack(side=LEFT)
+    r4.pack(side=RIGHT)
+
+
+def open_formul():
+    def vibor():
+        viber=var.get()
+        lbl.configure(text=viber)
+    def vibor():
+        viber=var.get()
+        lbl.configure(text=viber)
+    formul=Toplevel()#создаём второе(дочернее) окно Tk делает главную Toplevel делает вторую
+    formul.geometry("1000x500")
+    formul.grab_set()#не позволяет закрыть основное окно, пока не закроем дочернее окно
+    formul.configure(bg="#A9A9A9")
+    var=StringVar()
+    var.set("ODIN")
+    r1=Radiobutton(formul,text="D=0",height=3, width=6, font="Arial 20", fg="black", bg="green" , variable=var,value="Один корень",command=vibor)
+    r2=Radiobutton(formul,text="D>0",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Два корня",command=vibor)
+    r3=Radiobutton(formul,text="D<0",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Нет корней",command=vibor)
+    lbl=Label(formul,text="ax**2 + bx + c = 0\n D = b**2 − 4ac.", height=4, width=20, font="Arial 20", fg="black", bg="pink")
+    r1.pack(side=BOTTOM)
     r2.pack(side=LEFT)
     r3.pack(side=RIGHT)
-    r4.pack(side=BOTTOM)
+    lbl.pack()
+
+    formul.mainloop()
+
 def cmd1():
     print("Exit . . . ")
     aken.destroy()
@@ -271,9 +319,15 @@ def cmd3():
     print("TOPLEVEL")
     aken.command=open_win2()
 
-anim(0,0,"В Ы Х О Д","#ffcc66","white",cmd1)
-anim(0,37,"Р Е Ш Е Н И Е","#f86263","white", cmd2)
+def cmd4():
+    print("формулы")
+    aken.command=open_formul()
+
+anim(0,0,"Р Е Ш Е Н И Е","#f86263","white", cmd2)
+anim(0,37,"Ф О Р М У Л Ы","#f86263","white", cmd4)
 anim(0,74, "Ф И Г У Р А", "#f86263","white", cmd3)
+anim(0,111,"В Ы Х О Д","#ffcc66","white",cmd1)
+
 #canvas=Canvas(aken,width=600,height=300)
 #canvas.grid(columnspan=3)
 
