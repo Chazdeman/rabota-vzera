@@ -110,17 +110,6 @@ def open_win():
             text=f"График нет возможности построить"
         vastus.configure(text=f"D={D}\n{t}\n{text}")
     global a,b,c
-    t=0
-    def veel():
-        global t
-        if t==0:
-            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()-200))
-            btn_veel.config(text="Уменьшить окно")
-            t=1
-        else:
-            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()+200))
-            btn_veel.config(text="Увеличить окно")
-            t=0
     win=Toplevel()#создаём второе(дочернее) окно Tk делает главную Toplevel делает вторую
     win.geometry("1000x500")
     win.grab_set()#не позволяет закрыть основное окно, пока не закроем дочернее окно
@@ -131,8 +120,6 @@ def open_win():
     #f2.pack(side=BOTTOM)
     lbl=Label(win,text="Решение квадратного уравнения", height=4,width=30, font="Arial 20",fg="black", bg="pink")
     lbl.pack()
-    btn_veel=Button(win,text="Увеличить окно",font="Calibri 26",bg="green",command=veel)
-    btn_veel.pack(side=BOTTOM)
     vastus=Label(win,text="Решение", height=4, width=40, font="Arial 20", fg="black", bg="pink")
     vastus.pack(side=BOTTOM)
     reh=Button(win,text="График",font="Times_New_Roman 20", fg="black" ,bg="green", height=4,width=15, command=grafik)
@@ -154,6 +141,17 @@ def open_win():
     win.mainloop()
 
 def open_win2():
+    t=0
+    def veel():
+        global t
+        if t==0:
+            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()-200))
+            btn_veel.config(text="Уменьшить окно")
+            t=1
+        else:
+            win.geometry(str(win.winfo_width())+"x"+str(win.winfo_height()+200))
+            btn_veel.config(text="Увеличить окно")
+            t=0
     def ket():
         x1 = np.arange(0, 9.5, 1)#min max step
         y1=(2/27)*x1*x1-3
@@ -203,7 +201,45 @@ def open_win2():
         plt.ylabel('y')
         plt.xlabel('x')
         plt.grid(True)
-        plt.show()      
+        plt.show()  
+    def lagushka():
+        x1 = np.arange(-7,7.5, 0.5)#min max step
+        y1=(-3/49)*x1*x1+8
+        x2 = np.arange(-7,7.5, 0.5)#min max step
+        y2=(4/49)*x2*x2+1
+        x3 = np.arange(-6.8,-1.5, 0.5)#min max step
+        y3=(-0.75)*(x3+4)**2+11
+        x4 = np.arange(2,7.3, 0.5)#min max step
+        y4=(-0.75)*(x4-4)**2+11
+        x5 = np.arange(-5.8,-2.3  , 0.5)#min max step
+        y5=-(x5+4)**2+9
+        x6 = np.arange(2.8, 6.3 , 0.5)#min max step
+        y6=-(x6-4)**2+9
+        x7 = np.arange(-4,4.5 , 0.5)#min max step
+        y7=(4/9)*x7*x7-5
+        x8 = np.arange(-5.2,5.7 , 0.5)#min max step
+        y8=(4/9)*x8*x8-9
+        x9 = np.arange(-7,-2.3 , 0.5)#min max step
+        y9=(-1/16)*(x9+3)**2-6
+        x10 = np.arange(2.8,7.5 , 0.5)#min max step
+        y10=(-1/16)*(x10-3)**2-6
+        x11 = np.arange(-7,0.5, 0.5)#min max step
+        y11=(1/9)*(x11+4)**2-11
+        x12 = np.arange(0, 7.5 ,0.5)#min max step
+        y12=(1/9)*(x12-4)**2-11
+        x13 = np.arange(-7,-4.0 ,0.5)#min max step
+        y13=-(x13+5)**2
+        x14 = np.arange(4.5 ,7.5 ,0.5)#min max step
+        y14=-(x14-5)**2
+        x15 = np.arange(-3, 3.5 ,0.5)#min max step
+        y15=(2/9)*x15*x15+2
+        fig = plt.figure()
+        plt.plot(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11,x12,y12,x13,y13,x14,y14,x15,y15)
+        plt.title('КИТ')
+        plt.ylabel('y')
+        plt.xlabel('x')
+        plt.grid(True)
+        plt.show()
     def vibor():
         viber=var.get()
         lbl.configure(text=viber)
@@ -214,9 +250,11 @@ def open_win2():
     lbl=Label(win2,text="!Ф-И-Г-У-Р-Ы!", height=4, width=20, font="Arial 20", fg="black", bg="pink")
     var=StringVar()
     var.set("ODIN")
+    btn_veel=Button(win,text="Увеличить окно",font="Calibri 26",bg="green",command=veel)
+    btn_veel.pack(side=TOP)
     r1=Radiobutton(win2,text="Кит",height=3, width=6, font="Arial 20", fg="black", bg="green" , variable=var,value="kala", command=ket)
     r2=Radiobutton(win2,text="Зонтик",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Зонтик")
-    r3=Radiobutton(win2,text="Лягушка",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Лягуха",)
+    r3=Radiobutton(win2,text="Лягушка",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Лягуха",command=lagushka)
     r4=Radiobutton(win2,text="Очки",height=3, width=6, font="Arial 20", fg="black", bg="green" ,variable=var,value="Очки", command=ochi)
     lbl.pack()
     r1.pack(side=TOP)
