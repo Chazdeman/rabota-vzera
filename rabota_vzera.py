@@ -78,7 +78,7 @@ def open_win():
                 vastus.configure(text=f"D={D}\n{t}")
                 a.configure(bg="#03ecfc")
                 b.configure(bg="#03ecfc")
-                c.configure(bg="#03ecfc")
+                c.configure(bg="#03ecfc")#1
         else:
 
            if a.get()=="":
