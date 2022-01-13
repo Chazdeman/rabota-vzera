@@ -309,6 +309,46 @@ def open_formul():
 
     formul.mainloop()
 
+def open_lizo():
+    lizo=Toplevel()#создаём второе(дочернее) окно Tk делает главную Toplevel делает вторую
+    lizo.geometry("1000x500")
+    lizo.grab_set()#не позволяет закрыть основное окно, пока не закроем дочернее окно
+    lizo.configure(bg="#A9A9A9")
+
+    # Рисунок 300x300 пикселей, фон - белый 
+    c = Canvas(lizo, width=300, height=300, bg="white") 
+    c.create_polygon([(255, 55), (255, 55), (230, 95)], fill="green")
+    # Овал 
+    c.create_oval((10, 150, 50, 120), ) 
+    # Прямоугольник красного цвета с большой серой границей 
+    c.create_rectangle((105, 105, 150, 130), fill="red", outline="grey", width="5") 
+    c.create_arc((100, 150, 200, 275), extent=359, style=ARC, fill="black",width="5" ) 
+    c.pack() 
+
+    #В результате работы этой программы на экране появится окно:
+
+    #Пример 2
+
+
+    def kontroll():
+        lbl.configure(text=v.get())
+        if v.get()==1:
+            print("esmaspäev")
+        elif v.get()==2:
+            print("teisipäev")
+
+    v=IntVar()
+    v.set(1)
+    rad1=Radiobutton(lizo,text="glaza",variable=v,value=1,command=kontroll)
+    rad2=Radiobutton(lizo,text="rot", variable=v,value=2,bg="red",command=kontroll)
+    lbl=Label(lizo, text="...")
+
+    rad1.pack(side=LEFT)
+    rad2.pack(side=RIGHT)
+
+    lbl.pack()
+
+    lizo.mainloop()
 def cmd1():
     print("Exit . . . ")
     aken.destroy()
@@ -318,15 +358,17 @@ def cmd2():
 def cmd3():
     print("TOPLEVEL")
     aken.command=open_win2()
-
 def cmd4():
     print("формулы")
     aken.command=open_formul()
-
+def cmd5():
+    print("ЛИЦО")
+    aken.command=open_lizo()
 anim(0,0,"Р Е Ш Е Н И Е","#f86263","white", cmd2)
 anim(0,37,"Ф О Р М У Л Ы","#f86263","white", cmd4)
 anim(0,74, "Ф И Г У Р А", "#f86263","white", cmd3)
-anim(0,111,"В Ы Х О Д","#ffcc66","white",cmd1)
+anim(0,111, "ФОТО РОБОТ", "#f86263","white", cmd5)
+anim(0,148,"В Ы Х О Д","#ffcc66","white",cmd1)
 
 #canvas=Canvas(aken,width=600,height=300)
 #canvas.grid(columnspan=3)
