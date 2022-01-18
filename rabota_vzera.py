@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+from tkinter import *
 aken=Tk()
 aken.geometry("300x500")
 aken.configure(bg="white")
@@ -361,6 +361,93 @@ def open_lizo():
     ch_brov=Checkbutton(lizo,text="БРОВЬ",height=3, width=15, font="Arial 20", fg="black", bg="green", variable=var_nao, onvalue="Brov", offvalue="tühi",command=lisa_brov)
     ch_brov.pack()
     lizo.mainloop()
+
+
+def tabliza():
+    Tabl=Toplevel()#создаём второе(дочернее) окно Tk делает главную Toplevel делает вторую
+    Tabl.grab_set()#не позволяет закрыть основное окно, пока не закроем дочернее окно
+    Tabl.configure(bg="#A9A9A9")
+    Tabl.geometry("980x710")
+    file=open("Uroki.txt", "r")
+
+    Label(Tabl,text=" ",width=20,height=5,relief="solid").grid(row=0,column=0)
+    Label(Tabl,text=" 0 ",width=10,height=5,relief="solid").grid(row=0,column=1)
+    Label(Tabl,text=" 1 ",width=10,height=5,relief="solid").grid(row=0,column=2)
+    Label(Tabl,text=" 2 ",width=10,height=5,relief="solid").grid(row=0,column=3)
+    Label(Tabl,text=" 3 ",width=10,height=5,relief="solid").grid(row=0,column=4)
+    Label(Tabl,text=" 4 ",width=10,height=5,relief="solid").grid(row=0,column=5)
+    Label(Tabl,text=" 5 ",width=10,height=5,relief="solid").grid(row=0,column=6)
+    Label(Tabl,text=" 6 ",width=10,height=5,relief="solid").grid(row=0,column=7)
+    Label(Tabl,text=" 7 ",width=10,height=5,relief="solid").grid(row=0,column=8)
+    Label(Tabl,text=" 8 ",width=10,height=5,relief="solid").grid(row=0,column=9)
+    Label(Tabl,text=" 9 ",width=10,height=5,relief="solid").grid(row=0,column=10)
+    Label(Tabl,text=" 10 ",width=10,height=5,relief="solid").grid(row=0,column=11)
+    Label
+    Label(Tabl,text=" Понедельник ",width=20,height=8,relief="solid").grid(row=1,column=0) #понедельник
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=1)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=2)
+    Label(Tabl,text=" Eesti Keel ",width=10,height=4,relief="groove",bg="#cab4c7").grid(row=1,column=2,sticky=S)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=3)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=4)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=5)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=6)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=7)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=8)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=9)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=10)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=1,column=11)
+    #Label(Tabl,text=" Ести ",width=10,height=4,relief="groove",bg="black").grid(row=1,column=2,sticky=S)
+    Label(Tabl,text=" Вторник ",width=20,height=8,relief="solid").grid(row=2,column=0) #вторник
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=1)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=2)
+    Label(Tabl,text=" Keemia ",width=10,height=8,relief="flat",bg="#e080e0").grid(row=2,column=2)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=3)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=4)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=5)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=6)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=7)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=8)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=9)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=10)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=2,column=11)
+    Label(Tabl,text=" Среда ",width=20,height=8,relief="solid").grid(row=3,column=0) #среда
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=1)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=2)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=3)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=4)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=5)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=6)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=7)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=8)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=9)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=10)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=3,column=11)
+    Label(Tabl,text=" Четверг ",width=20,height=8,relief="solid").grid(row=4,column=0)#четверг
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=1)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=2)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=3)  
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=4)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=5)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=6)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=7)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=8)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=9)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=10)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=4,column=11)
+    Label(Tabl,text=" Пятница ",width=20,height=8,relief="solid").grid(row=5,column=0) #пятница
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=1)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=2)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=3)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=4)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=5)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=6)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=7)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=8)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=9)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=10)
+    Label(Tabl,text=" ",width=10,height=8,relief="groove").grid(row=5,column=11)
+    Tabl.mainloop()
+
 def cmd1():
     print("Exit . . . ")
     aken.destroy()
@@ -376,12 +463,16 @@ def cmd4():
 def cmd5():
     print("ЛИЦО")
     aken.command=open_lizo()
+def cmd6():
+    print("Консоль")
+    aken.command=tabliza()
+
 anim(0,0,"Р Е Ш Е Н И Е","#f86263","white", cmd2)
 anim(0,37,"Ф О Р М У Л Ы","#f86263","white", cmd4)
 anim(0,74, "Ф И Г У Р А", "#f86263","white", cmd3)
 anim(0,111, "ФОТО РОБОТ", "#f86263","white", cmd5)
-anim(0,148,"В Ы Х О Д","#ffcc66","white",cmd1)
-
+anim(0,148,"Т А Б Л И Ц А","#f86263","white",cmd6)
+anim(0,185,"В Ы Х О Д","#ffcc66","white",cmd1)
 #canvas=Canvas(aken,width=600,height=300)
 #canvas.grid(columnspan=3)
 
